@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './components';
+import Navbar from './components/Navbar';
 
 // The App component
-export default () => ( <Navbar /> )
+export default () => ( <Navbar /> );
