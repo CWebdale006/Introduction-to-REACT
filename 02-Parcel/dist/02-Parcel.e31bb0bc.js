@@ -31736,84 +31736,131 @@ if ("development" === 'production') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Navbar;
+exports.default = exports.Logo = exports.Dropdown = exports.Searchbar = exports.Navitem = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Navbar() {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("ul", {
-    className: "nav nav-tabs",
-    id: "navId"
-  }, _react.default.createElement("li", {
+var Navitem = function Navitem(_ref) {
+  var props = Object.assign({}, _ref);
+  return _react.default.createElement("li", {
     className: "nav-item"
   }, _react.default.createElement("a", {
-    href: "#tab1Id",
-    className: "nav-link active"
-  }, "Active")), _react.default.createElement("li", {
+    href: props.link,
+    className: "nav-link"
+  }, props.text));
+};
+
+exports.Navitem = Navitem;
+
+var Searchbar = function Searchbar(_ref2) {
+  var props = Object.assign({}, _ref2);
+  return _react.default.createElement("form", {
+    className: "form-inline my-2 my-lg-0"
+  }, _react.default.createElement("input", {
+    className: "form-control mr-sm-2",
+    type: "text",
+    placeholder: "Search"
+  }), _react.default.createElement("button", {
+    className: "btn btn-outline-success my-2 my-sm-0",
+    type: "submit"
+  }, "Search"));
+};
+
+exports.Searchbar = Searchbar;
+
+var Dropdown = function Dropdown(props) {
+  var Listitem = function Listitem(_ref3) {
+    var props = Object.assign({}, _ref3);
+    return _react.default.createElement("a", {
+      className: "dropdown-item",
+      href: props.href
+    }, props.title);
+  };
+
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("li", {
     className: "nav-item dropdown"
   }, _react.default.createElement("a", {
     className: "nav-link dropdown-toggle",
-    "data-toggle": "dropdown",
     href: "#",
-    role: "button",
+    id: "dropdownId",
+    "data-toggle": "dropdown",
     "aria-haspopup": "true",
     "aria-expanded": "false"
-  }, "Dropdown"), _react.default.createElement("div", {
-    className: "dropdown-menu"
-  }, _react.default.createElement("a", {
-    className: "dropdown-item",
-    href: "#tab2Id"
-  }, "Action"), _react.default.createElement("a", {
-    className: "dropdown-item",
-    href: "#tab3Id"
-  }, "Another action"), _react.default.createElement("div", {
-    className: "dropdown-divider"
+  }, props.title), _react.default.createElement("div", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownId"
+  }, _react.default.createElement(Listitem, {
+    title: "action1",
+    href: "#"
+  }), _react.default.createElement(Listitem, {
+    title: "action2",
+    href: "#"
+  }))), _react.default.createElement("style", {
+    jsx: "true"
+  }, "\n        .dropdown:hover .dropdown-menu{\n            display:block;\n        }\n        "));
+};
+
+exports.Dropdown = Dropdown;
+
+var Logo = function Logo(_ref4) {
+  var props = Object.assign({}, _ref4);
+  return _react.default.createElement("div", null, _react.default.createElement("img", {
+    src: props.source
   }), _react.default.createElement("a", {
-    className: "dropdown-item",
-    href: "#tab4Id"
-  }, "Action"))), _react.default.createElement("li", {
-    className: "nav-item"
+    className: "navbar-brand",
+    href: "#"
+  }, props.title));
+};
+
+exports.Logo = Logo;
+
+var Navbar = function Navbar() {
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
+    className: "navbar navbar-expand-sm navbar-light bg-light"
+  }, _react.default.createElement(Logo, {
+    title: "Mango Airlines",
+    source: ""
+  }), _react.default.createElement("button", {
+    className: "navbar-toggler d-lg-none",
+    type: "button",
+    "data-toggle": "collapse",
+    "data-target": "#collapsibleNavId",
+    "aria-controls": "collapsibleNavId",
+    "aria-expanded": "false",
+    "aria-label": "Toggle navigation"
+  }, _react.default.createElement("span", {
+    className: "navbar-toggler-icon"
+  })), _react.default.createElement("div", {
+    className: "collapse navbar-collapse",
+    id: "collapsibleNavId"
+  }, _react.default.createElement("ul", {
+    className: "navbar-nav mr-auto mt-2 mt-lg-0"
+  }, _react.default.createElement("li", {
+    className: "nav-item active"
   }, _react.default.createElement("a", {
-    href: "#tab5Id",
-    className: "nav-link"
-  }, "Another link")), _react.default.createElement("li", {
-    className: "nav-item"
-  }, _react.default.createElement("a", {
-    href: "#",
-    className: "nav-link disabled"
-  }, "Disabled"))), _react.default.createElement("div", {
-    className: "tab-content"
-  }, _react.default.createElement("div", {
-    className: "tab-pane fade show active",
-    id: "tab1Id",
-    role: "tabpanel"
-  }), _react.default.createElement("div", {
-    className: "tab-pane fade",
-    id: "tab2Id",
-    role: "tabpanel"
-  }), _react.default.createElement("div", {
-    className: "tab-pane fade",
-    id: "tab3Id",
-    role: "tabpanel"
-  }), _react.default.createElement("div", {
-    className: "tab-pane fade",
-    id: "tab4Id",
-    role: "tabpanel"
-  }), _react.default.createElement("div", {
-    className: "tab-pane fade",
-    id: "tab5Id",
-    role: "tabpanel"
-  })));
-}
+    className: "nav-link",
+    href: "#"
+  }, "Home ", _react.default.createElement("span", {
+    className: "sr-only"
+  }, "(current)"))), _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Navitem, {
+    link: "#",
+    text: "About"
+  }), _react.default.createElement(Dropdown, {
+    title: "Flights"
+  }))), _react.default.createElement(Searchbar, null))));
+};
+
+var _default = Navbar;
+exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.Welcome = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -31827,6 +31874,13 @@ var _default = function _default() {
 };
 
 exports.default = _default;
+
+var Welcome = function Welcome(_ref) {
+  var props = Object.assign({}, _ref);
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("h1", null, " Hello, ", props.name, " "), _react.default.createElement("h1", null, " ", props.title));
+};
+
+exports.Welcome = Welcome;
 },{"react":"node_modules/react/index.js","./components/Navbar":"components/Navbar.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
@@ -31839,7 +31893,7 @@ var _App = _interopRequireDefault(require("./App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('app'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"../../../../../.nvm/versions/node/v10.16.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31867,7 +31921,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54553" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54785" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -32043,5 +32097,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../../../.nvm/versions/node/v10.16.3/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/02-Parcel.e31bb0bc.js.map
