@@ -31806,22 +31806,23 @@ exports.Dropdown = Dropdown;
 
 var Logo = function Logo(_ref4) {
   var props = Object.assign({}, _ref4);
-  return _react.default.createElement("div", null, _react.default.createElement("img", {
-    src: props.source
-  }), _react.default.createElement("a", {
+  return _react.default.createElement("div", null, _react.default.createElement("a", {
     className: "navbar-brand",
     href: "#"
-  }, props.title));
+  }, _react.default.createElement("img", {
+    src: props.source
+  }), props.title));
 };
 
 exports.Logo = Logo;
 
-var Navbar = function Navbar() {
+var Navbar = function Navbar(_ref5) {
+  var props = Object.assign({}, _ref5);
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
     className: "navbar navbar-expand-sm navbar-light bg-light"
   }, _react.default.createElement(Logo, {
-    title: "Mango Airlines",
-    source: ""
+    title: props.title,
+    source: props.logo
   }), _react.default.createElement("button", {
     className: "navbar-toggler d-lg-none",
     type: "button",
@@ -31860,6 +31861,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.MyComponent = MyComponent;
 exports.Welcome = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
@@ -31868,9 +31870,18 @@ var _Navbar = _interopRequireDefault(require("./components/Navbar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// The App component
+// rfc - react functional component 
+function MyComponent(props) {
+  return _react.default.createElement(_react.default.Fragment, null, props.children);
+} // The App component
+
+
 var _default = function _default() {
-  return _react.default.createElement(_Navbar.default, null);
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Navbar.default, {
+    title: "Mango Airlines",
+    logo: "",
+    homePage: ""
+  }), _react.default.createElement(MyComponent, null, "hi"));
 };
 
 exports.default = _default;
@@ -31921,7 +31932,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54785" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61125" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

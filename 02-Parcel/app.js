@@ -1,10 +1,26 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 
+// rfc - react functional component 
+export function MyComponent(props) {
+  return (
+    <>
+    {props.children}
+    </>
+  );
+}
+
+
+
 // The App component
 export default () => {
     return (
-        <Navbar />
+        <>
+        <Navbar title="Mango Airlines" logo="" homePage=""/>
+        <MyComponent>
+            hi
+        </MyComponent>
+        </>
     )
 };
 

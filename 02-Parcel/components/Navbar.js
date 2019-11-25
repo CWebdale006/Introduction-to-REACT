@@ -48,17 +48,20 @@ export const Dropdown = props => {
 export const Logo = ({...props}) => {
     return (
         <div>
-            <img src={props.source} />
-            <a className="navbar-brand" href="#">{props.title}</a>
+            
+            <a className="navbar-brand" href="#">
+                <img src={props.source} />
+                {props.title}
+            </a>
         </div>
     )
 };
 
-const Navbar = () => {
+const Navbar = ({...props}) => {
   return (
     <>
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
-        <Logo title="Mango Airlines" source="" />
+        <Logo title={props.title} source={props.logo} />
         <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
